@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+
+
+{% block display_div %}
+
+<div>
+    <ul class="list-group">
+    {% for item in repo %}
+        <li class="list-group-item"><span class="badge">{{item.content.count}}</span>
+            <button class="btn btn-block text-primary" data-toggle="collapse" data-target="#demo{{forloop.counter}}"><h3>{{item.type}}</h3></button>
+            <div id="demo{{forloop.counter}}" class="collapse">
+            <br>
+                <div class="list-group">
+                    {% for it in item.content %}
+                        <a class="list-group-item" href="/creative/display/{{it.id}}" >
+                            <div class="bg-danger text-center" ><h3>{{ it.name }}</h3></div>
+                        </a>
+                    {% endfor %}
+                </div>        
+            </div>
+        </li>
+    {% endfor %}
+        
+    </ul>
+</div>
+
+{% endblock %}
