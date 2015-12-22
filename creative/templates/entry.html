@@ -2,8 +2,9 @@
 
 
 
-{% block display_div %}
-    <div class="text-center">
-        <h2>{{entry.content}}</h2>
+{% block entry_div %}
+    <div class="text-muted">
+        <h1 class="text-muted"> {{entry.name}} </h1>
+        <h2><pre>{{entry.content}}</pre></h2>
     </div>
 {% endblock %}

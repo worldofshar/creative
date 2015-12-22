@@ -1,0 +1,53 @@
+body {
+    background-color: black;
+    background-image: url('/static/1.jpg'), url('/static/2.jpg');
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, contain;
+    background-position: top, bottom;
+}
+.header{
+ min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+    min-width: 100%;
+  display: flex;
+  align-items: center;
+
+
+}
+.navbar-custom{
+        background-color: darkgoldenrod;
+
+}
+
+.nav-text{
+    color: black;
+}
+.container{
+    display:flex;
+
+}
+.text-muted {
+    color: snow;
+}
+.category {
+    margin-bottom: 3%; 
+    background-color: black;
+}
+.category-type {
+    background-color: black;
+}
+.category-list {
+    background-color: black;
+    color: black;
+}
+
+input[type=text] {
+    background-color: papayawhip;
+    width: 50%;
+}
+#sel1, #sel2{
+    width: 25%;
+}
+textarea {
+    width:80%;
+}

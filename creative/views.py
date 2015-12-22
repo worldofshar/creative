@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from creative.quote import quote_of_the_day, word_of_the_day
 from creative.models import Repository
 # Create your views here.
 
@@ -12,6 +13,8 @@ def wish_list(request):
 
 
 def home(request):
+    quote = quote_of_the_day()
+    word = word_of_the_day()
     repo = [{'type': 'Short Story',
             'content': Repository.objects.filter(tag='Short Story')},
             {'type': 'Poetry',
@@ -20,7 +23,8 @@ def home(request):
             'content': Repository.objects.filter(tag='Essay')},
             {'type': 'Start',
             'content': Repository.objects.filter(tag='Start')}]
-    return render(request, 'home.html', {'repo': repo})
+    return render(request, 'home.html', {'repo': repo,
+                                         'quote': quote, 'word': word})
 
 
 def add(request):

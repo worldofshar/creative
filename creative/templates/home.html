@@ -1,24 +1,61 @@
 {% extends "base.html" %} 
 
+{% block logo%}
+    <div class="header">
+
+        <div class="jumbotron text-center">
+                                 <h2>worldofshar</h2> 
+        </div>
+    </div>
+
+{% endblock%}
+
+{% block quote_of_the_day %}
+            <h2><em>Quote of the day</em></h2>
+            <hr>
+
+    <h3><b>{{quote.q}}</b></h3>
+    <h3>{{quote.a}}</h3>
+{% endblock %}
+
+{% block word_of_the_day %}
+<h2><em>Word of the day</em></h2>
+    <hr>
+    <h3><b>{{word.w}}</b></h3>
+    <h3>{{word.d}}</h3>
+{% endblock %}
+
 
 {% block display_div %}
 
-<div>
+<div >
     <ul class="list-group">
     {% for item in repo %}
-        <li class="list-group-item"><span class="badge">{{item.content.count}}</span>
-            <button class="btn btn-block text-primary" data-toggle="collapse" data-target="#demo{{forloop.counter}}"><h3>{{item.type}}</h3></button>
-            <div id="demo{{forloop.counter}}" class="collapse">
+    <div class="category">
+        <li class="list-group-item category">
+            <div class="row category-type">
+                <div class="col-md-11">
+                   <button class="btn btn-block" data-toggle="collapse" data-target="#demo{{forloop.counter}}"><h4>{{item.type}}</h4></button>
+                </div>
+                <div class="col-md-1">
+                    <span class="badge">{{item.content.count}}</span>
+                </div>            
+            </div>
+            
+            <div id="demo{{forloop.counter}}" class=" collapse">
             <br>
-                <div class="list-group">
+                <div class="list-group category-list">
                     {% for it in item.content %}
-                        <a class="list-group-item" href="/creative/display/{{it.id}}" >
-                            <div class="bg-danger text-center" ><h3>{{ it.name }}</h3></div>
-                        </a>
+                        
+                                <a class="list-group-item" href="/creative/display/{{it.id}}" >
+                                    <div class="text-center" ><h2>{{ it.name }}</h2></div>
+                                </a>
+                            
                     {% endfor %}
                 </div>        
             </div>
         </li>
+        </div>
     {% endfor %}
         
     </ul>
