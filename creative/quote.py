@@ -1,16 +1,15 @@
 from requests import get
 from lxml import html
-from datetime import date, timedelta
 
 
 def word_of_the_day():
-    page = get("http://dictionary.reference.com/wordoftheday/")
+    page = get("http://www.oed.com/")
     tree = html.fromstring(page.content)
-    day = str(date.today() - timedelta(days=1))
-    word = tree.xpath('//*[@id="wotd-' + day +
-                      '"]/div[2]/div[1]/div/div[3]/div/strong')[0].text
-    defn = tree.xpath('//*[@id="wotd-' + day +
-                      '"]/div[2]/div[1]/div/div[3]/ol/li/span')[0].text
+    w_xpath = '//*[@id="columnTwo"]/div[3]/div/div/p[1]/a/span/span[1]'
+    d_xpath = '//*[@id="columnTwo"]/div[3]/div/div/p[3]'
+    word = tree.xpath(w_xpath)[0].text
+
+    defn = tree.xpath(d_xpath)[0].text
     return {'w': word, 'd': defn}
 
 
