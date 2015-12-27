@@ -1,14 +1,6 @@
 {% extends "base.html" %} 
 
-{% block logo%}
-    <div class="header">
 
-        <div class="jumbotron text-center">
-                                 <h2>worldofshar</h2> 
-        </div>
-    </div>
-
-{% endblock%}
 
 {% block quote_of_the_day %}
             <h2><em>Quote of the day</em></h2>
@@ -25,8 +17,8 @@
     <h3>{{word.d}}</h3>
 {% endblock %}
 
-
 {% block display_div %}
+<div id="auth" class="{{auth}}"></div>
 
 <div >
     <ul class="list-group">
@@ -60,5 +52,10 @@
         
     </ul>
 </div>
-
+<script type="text/javascript">
+    var testfunc = function(){
+        alert($("#auth").class)
+    };
+    testfunc();
+</script>
 {% endblock %}

@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from creative import urls as creative_urls
+from worldofshar.views import index_view
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^creative/', include(creative_urls)),
+    url(r'^$', index_view, name="index"),
 ]

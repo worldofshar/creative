@@ -1,31 +1,62 @@
 body {
     background-color: black;
-    background-image: url('/static/1.jpg'), url('/static/2.jpg');
-    background-repeat: no-repeat, no-repeat;
-    background-size: contain, contain;
-    background-position: top, bottom;
+    }
+.display_div{
+    background-image: url('/static/3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover ;
+    height: 683px;
+    background-color: white;
+
 }
-.header{
- min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-    min-width: 100%;
+
+.index-container{
+
+}
+
+
+.header {
+    background-image: url('/static/4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 683px;
+    
   display: flex;
   align-items: center;
-
-
-}
-.navbar-custom{
-        background-color: darkgoldenrod;
+  position: relative;
+    padding-top: 35%;
+    padding-bottom: 20%;
 
 }
-
-.nav-text{
-    color: black;
+.header button {
+    background-color: firebrick;
+    padding: 1%;
+    font-size: 2em;
+    color:snow;
+    text-decoration: none;
 }
-.container{
-    display:flex;
+
+a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+    color:inherit;
 
 }
+.about{
+    background-image: url('/static/2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 683px;
+    color: gold;
+    padding: 2%;   
+    font-family: monospace;
+}
+.footer{
+    color: gold;
+    bottom:0%;
+    text-align: center;
+
+}
+
 .text-muted {
     color: snow;
 }
@@ -41,7 +72,7 @@ body {
     color: black;
 }
 
-input[type=text] {
+input[class=form-control] {
     background-color: papayawhip;
     width: 50%;
 }

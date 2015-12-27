@@ -4,6 +4,14 @@ from creative.models import Repository
 # Create your views here.
 
 
+def login(request):
+    pwd = request.POST.get('pwd', '')
+    if pwd != '':
+        auth = True
+        return render(request, "home.html", {'auth': auth})
+    return render(request, "login.html")
+
+
 def analyze(request):
     return render(request, "analyze.html")
 
@@ -23,7 +31,7 @@ def home(request):
             'content': Repository.objects.filter(tag='Essay')},
             {'type': 'Start',
             'content': Repository.objects.filter(tag='Start')}]
-    return render(request, 'home.html', {'repo': repo,
+    return render(request, 'home.html', {'repo': repo, 'auth': False,
                                          'quote': quote, 'word': word})
 
 
