@@ -3,10 +3,10 @@ from lxml import html
 
 
 def word_of_the_day():
-    page = get("http://www.oed.com/")
+    page = get("http://www.oxforddictionaries.com/")
     tree = html.fromstring(page.content)
-    w_xpath = '//*[@id="columnTwo"]/div[3]/div/div/p[1]/a/span/span[1]'
-    d_xpath = '//*[@id="columnTwo"]/div[3]/div/div/p[3]'
+    w_xpath = '/html/body/div[3]/div/div[2]/div[1]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/a/span[2]'
+    d_xpath = '/html/body/div[3]/div/div[2]/div[1]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/a/div[1]/div[3]'
     word = tree.xpath(w_xpath)[0].text
 
     defn = tree.xpath(d_xpath)[0].text
