@@ -77,11 +77,12 @@ WSGI_APPLICATION = 'worldofshar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'NAME': 'worldofshar',
         'USER': 'shar',
         'PASSWORD': 'witbeyondmeasure',
+        'PORT': '3306',
     }
 }
 
@@ -104,3 +105,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
