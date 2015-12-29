@@ -4,18 +4,24 @@
 
 {% cache 50000 wod_qod %}
 {% block quote_of_the_day %}
+                <div class="quote-of-day">
+
             <h2><em>Quote of the day</em></h2>
             <hr>
 
     <h3><b>{{quote.q}}</b></h3>
     <h3>{{quote.a}}</h3>
+    </div>
 {% endblock %}
 
 {% block word_of_the_day %}
+                <div class="word-of-day">
+
 <h2><em>Word of the day</em></h2>
     <hr>
     <h3><b>{{word.w}}</b></h3>
     <h3>{{word.d}}</h3>
+    </div>
 {% endblock %}
 {% endcache %}
 
