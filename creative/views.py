@@ -1,15 +1,31 @@
 from django.shortcuts import render, redirect
 from creative.quote import quote_of_the_day, word_of_the_day
-from creative.models import Repository
+from creative.models import Repository, AdminUser
 # Create your views here.
+
+
+def admin_view(request):
+    if request.session.get("admin_logged_in", False):
+        return render(request, "admin.html")
+    else:
+        return render(request, "login.html")
 
 
 def login(request):
     pwd = request.POST.get('pwd', '')
+    auth = False
     if pwd != '':
-        auth = True
-        return render(request, "home.html", {'auth': auth})
-    return render(request, "login.html")
+        auth = AdminUser().verify_pwd(pwd)
+    if auth:
+        request.session["admin_logged_in"] = True
+        return render(request, "admin.html")
+    else:
+        return redirect("/creative")
+
+
+def logout(request):
+    del request.session['admin_logged_in']
+    return redirect("/creative")
 
 
 def analyze(request):
@@ -36,6 +52,8 @@ def home(request):
 
 
 def add(request):
+    if not request.session.get("admin_logged_in", False):
+        return redirect('/creative')
     name_ = request.POST.get('title', '')
     if name_ != '':
         tag_ = request.POST.get('type', '')
@@ -45,7 +63,7 @@ def add(request):
                                   tag=tag_,
                                   status=status_,
                                   content=content_)
-        return redirect('/creative')
+        return redirect('/creative/admin')
     else:
         return render(request, "add.html")
 

@@ -1,11 +1,9 @@
-body {
-    background-color: black;
-    }
+
 .display_div{
-    background-image: url('/static/3.jpg');
-    background-repeat: no-repeat;
-    background-size: cover ;
-    height: 683px;
+    background-image: url('/static/3.jpg'), url('/static/3.jpg'), url('/static/3.jpg');
+    background-repeat: repeat, repeat,repeat;
+    background-size: cover,cover,cover ;
+
     background-color: white;
 
 }
@@ -13,39 +11,40 @@ body {
 .index-container{
 
 }
-
+.hidden{
+    visibility: hidden;
+}
 
 .header {
     background-image: url('/static/4.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 683px;
+
     
   display: flex;
   align-items: center;
   position: relative;
-    padding-top: 35%;
+    padding-top: 40%;
     padding-bottom: 20%;
 
 }
 .header button {
-    background-color: firebrick;
+    background-color: black;
     padding: 1%;
-    font-size: 2em;
+    width: auto;
+    border: 2px dotted gold;
+    border-radius: 20%;
     color:snow;
-    text-decoration: none;
 }
 
 a:hover, a:visited, a:link, a:active{
     text-decoration: none;
     color:inherit;
-
 }
 .about{
     background-image: url('/static/2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 683px;
     color: gold;
     padding: 2%;   
     font-family: monospace;
@@ -57,8 +56,18 @@ a:hover, a:visited, a:link, a:active{
 
 }
 
-.text-muted {
-    color: snow;
+.word-of-day, .quote-of-day {
+    color: palegreen;
+    background-color: dimgray ;
+    padding: 1%;
+    margin-left: 2%;
+    border-radius: 5%;
+
+
+}
+.quote-of-day{
+    float: right;
+    margin-right: 2%;
 }
 .category {
     margin-bottom: 3%; 

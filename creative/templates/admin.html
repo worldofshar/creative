@@ -1,0 +1,9 @@
+{% extends "base.html" %} 
+
+ {% block access_div %}
+     <a href="{% url 'write' %}"><button>Write </button></a>
+     <a href="{% url 'wish' %}"><button>Wish</button></a>
+     <a href="{% url 'think' %}"><button>Think</button></a>
+     <a href="{% url 'logout' %}"><button>LOGOUT</button></a>
+
+ {% endblock access_div %}

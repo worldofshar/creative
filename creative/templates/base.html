@@ -12,7 +12,8 @@
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/base.css">
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/static/base.js"></script>
+    {%block java_script %}{%endblock%}
+    {% load cache %}
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -22,26 +23,31 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="navbar-item active"><a href="{% url 'home' %}"><h3 class="">Creative Space</h3></a></li>
-                    <li class="navbar-item option"><a href="{% url 'write' %}"><h3 class="">Write</h3></a></li>
-                    <li class="navbar-item option"><a href="{% url 'wish' %}"><h3 class="">Wish</h3></a></li> 
-                    <li class="navbar-item option"><a href="{% url 'think' %}"><h3 class="">Think</h3></a></li> 
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'login' %}"><h3 class="">Login</h3></a></li>
-                    
                 </ul>
             
         </div>
-    </nav>
-<div class="display_div container-fluid">
+</nav>
     <h1>Fixed navbar</h1><br>
-    <div class="row">
-         <div class="row">
+
+<div class="display_div container-fluid">
+    <div class="admin_div">
+        <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+                <h3 class="text-muted">{% block access_div %}{% endblock %}</h3>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-11 col-md-offset-1">
                 <h3 class="text-muted">{% block login_div %}{% endblock %}</h3>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+                <h3 class="text-muted">{% block write_form %}{% endblock %}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 {% block display_div %}{% endblock %}
@@ -52,25 +58,23 @@
             {% block entry_div %}{% endblock %}
         </div>
 
+        {% cache 50000 wod_qod %}
         <div class="row">
             <div class="col-md-5">
             
-                <div class="text-muted">
+                <div class="word-of-day">
                     {% block word_of_the_day %}{% endblock%}
                 </div>
             </div>
-            <div class="col-md-6 ">
-                <div class="text-muted">
+            <div class="col-md-7 ">
+                <div class="quote-of-day">
                     {% block quote_of_the_day %}{% endblock%}
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-11">
-                <h3 class="text-muted">{% block write_form %}{% endblock %}</h3>
-            </div>
-        </div>
+        {% endcache %}
     </div>
 </div>
+
 </body>
 </html>
