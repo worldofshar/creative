@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="/static/base.css">
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
     {%block java_script %}{%endblock%}
-    {% load cache %}
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -58,7 +57,7 @@
             {% block entry_div %}{% endblock %}
         </div>
 
-        {% cache 50000 wod_qod %}
+        
         <div class="row">
             <div class="col-md-5">
             
@@ -72,7 +71,6 @@
                 </div>
             </div>
         </div>
-        {% endcache %}
     </div>
 </div>
 

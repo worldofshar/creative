@@ -1,7 +1,8 @@
 {% extends "base.html" %} 
+    {% load cache %}
 
 
-
+{% cache 50000 wod_qod %}
 {% block quote_of_the_day %}
             <h2><em>Quote of the day</em></h2>
             <hr>
@@ -16,6 +17,7 @@
     <h3><b>{{word.w}}</b></h3>
     <h3>{{word.d}}</h3>
 {% endblock %}
+{% endcache %}
 
 {% block display_div %}
 <div id="auth" class="{{auth}}"></div>

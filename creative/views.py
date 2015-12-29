@@ -46,7 +46,7 @@ def home(request):
             {'type': 'Essay',
             'content': Repository.objects.filter(tag='Essay')},
             {'type': 'Start',
-            'content': Repository.objects.filter(tag='Start')}]
+            'content': Repository.objects.filter(tag='Starts')}]
     return render(request, 'home.html', {'repo': repo, 'auth': False,
                                          'quote': quote, 'word': word})
 
