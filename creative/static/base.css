@@ -85,6 +85,7 @@ a:hover, a:visited, a:link, a:active{
 .preserve{
     color:black;
     word-wrap:break-word;
+    word-break: keep-all;
     white-space: pre;
     background-color: ghostwhite;
     padding: 1%;
