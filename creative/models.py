@@ -14,6 +14,14 @@ class Repository(models.Model):
         return self.name
 
 
+class Comment(models.Model):
+    entry_id = models.IntegerField()
+    entry_id = models.ForeignKey('Repository')
+    username = models.CharField(max_length=50)
+    comment_text = models.CharField(max_length=2000)
+    rating = models.IntegerField()
+
+
 class AdminUser(models.Model):
     user = models.CharField(default="worldofshar", max_length=20)
     pwd = models.CharField(max_length=512)

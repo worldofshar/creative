@@ -12,7 +12,6 @@
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/base.css">
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
-    {%block java_script %}{%endblock%}
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -26,10 +25,10 @@
             
         </div>
 </nav>
-    <h1>Fixed navbar</h1><br>
+    <h1>Fixed navbar</h1>
 
-<div class="display_div container-fluid">
-    <div class="admin_div">
+<div class="display-div container-fluid">
+    <div class="admin-div">
         <div class="row">
             <div class="col-md-11 col-md-offset-1">
                 <h3 class="text-muted">{% block access_div %}{% endblock %}</h3>
@@ -46,24 +45,29 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div>
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+           <div class="col-md-10 col-md-offset-1 content-div">
+                {% block entry_div %}{% endblock %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 comment-div">
+            {% block comment_div %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <div class="home-div row">
+        <div class="row">
+            <div class="types col-md-3">
                 {% block display_div %}{% endblock %}
             </div>
-        </div>
-
-        <div class="col-md-8 col-md-offset-2 entry_div">
-            {% block entry_div %}{% endblock %}
-        </div>
-
-        
-        <div class="row">
-            <div class="col-md-5">
-                    {% block word_of_the_day %}{% endblock%}
+            <div class="entries col-md-6">
             </div>
-            <div class="col-md-7 ">
-                    {% block quote_of_the_day %}{% endblock%}
+            <div class="col-md-3">
+                {% block word_of_the_day %}{% endblock%}
+                {% block quote_of_the_day %}{% endblock%}
             </div>
         </div>
     </div>

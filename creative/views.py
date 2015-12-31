@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from creative.quote import quote_of_the_day, word_of_the_day
-from creative.models import Repository, AdminUser
+from creative.models import Repository, AdminUser, Comment
 # Create your views here.
+from django.http import JsonResponse
 
 
 def admin_view(request):
@@ -39,16 +40,18 @@ def wish_list(request):
 def home(request):
     quote = quote_of_the_day()
     word = word_of_the_day()
-    repo = [{'type': 'Short Story',
-            'content': Repository.objects.filter(tag='Short Story')},
-            {'type': 'Poetry',
-            'content': Repository.objects.filter(tag='Poetry')},
-            {'type': 'Essay',
-            'content': Repository.objects.filter(tag='Essay')},
-            {'type': 'Start',
-            'content': Repository.objects.filter(tag='Starts')}]
-    return render(request, 'home.html', {'repo': repo, 'auth': False,
-                                         'quote': quote, 'word': word})
+    return render(request, 'home.html', {'quote': quote, 'word': word})
+
+
+def get_entry(request):
+    tag_type = request.GET.get('tag_type', '')
+    entries_obj = Repository.objects.filter(tag=tag_type)
+    entries = []
+    for item in entries_obj:
+        url = "/creative/display/" + str(item.id)
+        entry = {"name": item.name, "url": url, "status": item.status}
+        entries.append(entry)
+    return JsonResponse({'entries': entries})
 
 
 def add(request):
@@ -68,6 +71,22 @@ def add(request):
         return render(request, "add.html")
 
 
+def add_comment(request):
+    user = request.POST.get('username', '')
+    if user != '':
+        comment = request.POST.get('comment_text', '')
+        rating_ = request.POST.get('rating', 0)
+        entry_id = int(request.POST.get('entry', ''))
+        entry = Repository.objects.filter(id=entry_id)[0]
+        Comment.objects.create(username=user,
+                               comment_text=comment,
+                               rating=rating_,
+                               entry_id=entry)
+        return redirect("/creative/display/"+str(entry_id)+"/")
+
+
 def display(request, entry_id):
     entry = Repository.objects.filter(id=entry_id)[0]
-    return render(request, "entry.html", {'entry': entry})
+    comments = Comment.objects.filter(entry_id=entry_id)
+    return render(request, "entry.html",
+                  {'entry': entry, 'comments': comments})

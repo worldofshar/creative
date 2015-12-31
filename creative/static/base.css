@@ -1,23 +1,7 @@
 
-.display_div{
-    background-image: url('/static/3.jpg'), url('/static/3.jpg'), url('/static/3.jpg');
-    background-repeat: repeat, repeat,repeat;
-    background-size: cover,cover,cover ;
-
-    background-color: white;
-
-}
-
-.index-container{
-
-}
-.hidden{
-    visibility: hidden;
-}
-
 .header {
-    background-image: url('/static/4.jpg');
-    background-repeat: no-repeat;
+
+    background: url('/static/4.jpg') no-repeat center center fixed; 
     background-size: cover;
 
     
@@ -42,8 +26,7 @@ a:hover, a:visited, a:link, a:active{
     color:inherit;
 }
 .about{
-    background-image: url('/static/2.jpg');
-    background-repeat: no-repeat;
+    background: url('/static/2.jpg') no-repeat center center fixed; 
     background-size: cover;
     color: gold;
     padding: 2%;   
@@ -56,29 +39,78 @@ a:hover, a:visited, a:link, a:active{
 
 }
 
+
+.display-div{
+    background: url('/static/3.jpg') no-repeat center center fixed; 
+    background-size: cover;
+
+    background-color: white;
+}
+
+
 .word-of-day, .quote-of-day {
-    color: palegreen;
+    color: lawngreen;
     background-color: dimgray ;
     padding: 1%;
-    margin-left: 2%;
+    margin: 2%;
     border-radius: 5%;
+    opacity: 0.6;
+}
 
 
-}
-.quote-of-day{
-    float: right;
-    margin-right: 2%;
-}
-.category {
-    margin-bottom: 3%; 
-    background-color: black;
-}
 .category-type {
     background-color: black;
 }
 .category-list {
     background-color: black;
     color: black;
+}
+ .entry-div {
+    padding: 2%;
+    background-color: white;
+    color: green;
+
+    margin-bottom: 1%;
+    border-radius: 5%;
+}
+.entry-text{
+        display: inline-block;
+        text-align: justify;
+        margin-left: 3%;
+}
+
+.content-div h1{
+    color:green;
+}
+.preserve{
+    color:black;
+    white-space: pre;
+    background-color: ghostwhite;
+    padding: 1%;
+    border: 2px dotted limegreen;
+    border-radius: 2%;
+}
+.type{
+    cursor: pointer;
+        background-color:transparent;
+        color: dimgray;
+        margin: 2%;
+        border: 3px solid green;
+        border-radius: 5%;
+}
+.active1{
+    background-color: lawngreen;
+}
+.types {
+    padding-bottom: 15%;
+}
+.com{
+    color: ghostwhite;
+    background-color: black;
+    padding: 1%;
+    border-radius: 2%;
+    margin-bottom: 1%;
+    word-wrap: break-word;
 }
 
 input[class=form-control] {

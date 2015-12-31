@@ -26,39 +26,12 @@
 {% endcache %}
 
 {% block display_div %}
-<div id="auth" class="{{auth}}"></div>
 
-<div >
-    <ul class="list-group">
-    {% for item in repo %}
-    <div class="category">
-        <li class="list-group-item category">
-            <div class="row category-type">
-                <div class="col-md-11">
-                   <button class="btn btn-block" data-toggle="collapse" data-target="#demo{{forloop.counter}}"><h4>{{item.type}}</h4></button>
-                </div>
-                <div class="col-md-1">
-                    <span class="badge">{{item.content.count}}</span>
-                </div>            
-            </div>
-            
-            <div id="demo{{forloop.counter}}" class=" collapse">
-            <br>
-                <div class="list-group category-list">
-                    {% for it in item.content %}
-                        
-                                <a class="list-group-item" href="/creative/display/{{it.id}}" >
-                                    <div class="text-center" ><h2>{{ it.name }}</h2></div>
-                                </a>
-                            
-                    {% endfor %}
-                </div>        
-            </div>
-        </li>
-        </div>
-    {% endfor %}
-        
-    </ul>
+<div class="ypes list-group">
+  <div id="Short Story" class="type active1 list-group-item"><h2>Short Story</h2></div>
+  <div id="Poetry" class="type list-group-item"><h2>Poetry</h2></div>
+  <div id="Starts" class="type list-group-item"><h2>Starts</h2></div>
+  <div id="Essay" class="type list-group-item"><h2>Essay</h2></div>  
 </div>
-
+<script type="text/javascript" src="/static/base.js"></script>
 {% endblock %}
